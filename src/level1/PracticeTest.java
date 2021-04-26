@@ -1,10 +1,13 @@
 package level1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PracticeTest {
     
     /// Fields
     private int[] answerList;
-    private int[] supojaList;
+    
 
     /// Constructor
     public PracticeTest(){
@@ -22,7 +25,7 @@ public class PracticeTest {
          * 가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순 정렬해주세요.
          */
 
-        int answerCase = 1;
+        int answerCase = 2;
         switch (answerCase) {
             case 1 :
                 answerList = new int[]{1, 2, 3, 4, 5};
@@ -33,34 +36,29 @@ public class PracticeTest {
                 break;
         }
 
-        int supojaCase = 1;
-        switch (supojaCase) {
-            case 1 :
-                supojaList = new int[]{1, 2, 3, 4, 5};
-                break;
-            case 2 :
-                supojaList = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
-                break;
-            case 3 :
-                supojaList = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-            default:
-                break;
-        }
-
-        solution(answerList, supojaList);
+        solution(answerList);
     }
 
-    private void solution(int[] answerList, int[] supojaList) {
+    private void solution(int[] answerList)  {
 
-        for(int ans = 0 ; ans < answerList.length ; ans ++){
+        int[] supojaList1 = new int[]{1, 2, 3, 4, 5};
+        int[] supojaList2 = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
+        int[] supojaList3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
-            System.out.println(answerList[ans]);
+        int[][] supojaList = new int[][]{
+            {1, 2, 3, 4, 5},
+            {2, 1, 2, 3, 2, 4, 2, 5},
+            {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}
+        };
 
+        for(int i = 0 ; i < answerList.length ; ++i){
+            for(int j = 0 ; j < supojaList.length ; j++)
+                if(answerList[i] == supojaList[j][i%answerList.length] ){
+                    System.out.println(supojaList[j][i%answerList.length] + ", " + i%answerList.length + ", " + answerList[i]);
+                }
         }
-
+        
 
     }
-
-
     
 }
