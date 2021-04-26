@@ -58,9 +58,9 @@ public class CrainGame{
         // 결과 값 처리할 bucket이름을 가진 Stack 객체 생성
         Stack<Integer> bucket = new Stack<Integer>();
         // 크레인의 움직임에 대한 OUTER FOR 
-        for( int m = 0 ; m < movesLen ; m++){
+        for( int m = 0 ; m < movesLen ; ++m){
             // 배열 크기 만큼 처리 하기 위한 INNER FOR
-            for( int b = 0 ; b < boardLen; b++ ){
+            for( int b = 0 ; b < boardLen; ++b ){
                 // 게임보드에서 크레인을 움직여 얻은 값을 getPoint 이라는 변수에 할당.
                 int getPoint = board[b][moves[m]-1];
                 // getPoint의 값 0 이 아닐경우
