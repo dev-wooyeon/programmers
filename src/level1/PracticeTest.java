@@ -41,21 +41,25 @@ public class PracticeTest {
 
     private void solution(int[] answerList)  {
 
+        // 수포자 패턴 리스트 3개로 처리필요성 체크
         int[] supojaList1 = new int[]{1, 2, 3, 4, 5};
         int[] supojaList2 = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
         int[] supojaList3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
+        // 2차원 배열로 처리시 생기는 문제점?(식별성)
         int[][] supojaList = new int[][]{
             {1, 2, 3, 4, 5},
             {2, 1, 2, 3, 2, 4, 2, 5},
             {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}
         };
 
+        int[] cntArray = new int[supojaList.length];
         for(int i = 0 ; i < answerList.length ; ++i){
-            for(int j = 0 ; j < supojaList.length ; j++)
+            for(int j = 0 ; j < supojaList.length ; j++) {
                 if(answerList[i] == supojaList[j][i%answerList.length] ){
                     System.out.println(supojaList[j][i%answerList.length] + ", " + i%answerList.length + ", " + answerList[i]);
                 }
+            }
         }
         
 
