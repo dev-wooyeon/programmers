@@ -5,6 +5,7 @@ import level1.Marathon;
 import level1.PracticeTest;
 import level1.RecommandNewID;
 import level1.getMidStr;
+import level1.SumTwoInt;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -15,5 +16,6 @@ public class App {
         // new CheckCntN();
         // new getMidStr();
         new HateSameNum();
+        new SumTwoInt();
     }
 }
