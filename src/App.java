@@ -15,7 +15,7 @@ public class App {
         // new RecommandNewID();
         // new CheckCntN();
         // new getMidStr();
-        new HateSameNum();
+        // new HateSameNum();
         new SumTwoInt();
     }
 }
