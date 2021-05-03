@@ -8,7 +8,7 @@ public class CrainGame{
 
     /// Constructor
     public CrainGame(){
-        System.out.println(" CREATE DEFAULT CONSTRUCTOR ");
+        System.out.println( getClass().getName() + " CREATE DEFAULT CONSTRUCTOR ");
 
         problem();
     }

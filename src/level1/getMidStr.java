@@ -1,11 +1,11 @@
 package level1;
 
-public class getMidStr {
+public class GetMidStr {
     
     /// Fields
 
     /// Constructor
-    public getMidStr() {
+    public GetMidStr() {
         System.out.println( getClass().getName() + " Create Dafault Constructor " );
 
         problem();
