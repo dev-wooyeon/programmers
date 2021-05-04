@@ -1,8 +1,6 @@
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -17,7 +15,7 @@ public class App {
      * 앱 실행시 최초 호출하는 클래스 로더 메소드
      * 사용자에게 입력 받은 클래스의 생성을 담당한다.
      */
-    public static void classLoader() throws Exception{
+    public static void classLoader() throws Exception {
 
         // 처리할 데이터 객체 선언
         Map<Integer,Class<?>> classMap = new HashMap<Integer,Class<?>>();
@@ -58,6 +56,9 @@ public class App {
 
         // 입력 받은 클래스의 Default Constructor를 생성한다.
         classMap.get(scan.nextInt()).getDeclaredConstructor().newInstance();
+
+        // 스캐너가 사용되었으면 닫는다.
+        if(scan!=null) scan.close();
 
     }
     public static void main(String[] args) throws Exception {
