@@ -1,7 +1,6 @@
 package level1;
 
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class Ponketmon {
     
