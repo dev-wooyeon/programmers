@@ -2,12 +2,12 @@ package level1;
 
 import java.util.Scanner;
 
-public class Budget {
+public class MaskingNumber {
     
     /// Fields
 
     /// Contructor
-    public Budget() {
+    public MaskingNumber() {
         super();
 
         problem();
@@ -17,52 +17,49 @@ public class Budget {
     public void problem(){
 
         System.out.println("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
-        System.out.println("1. d[1,3,2,5,4] budget:9");
-        System.out.println("2. d[2,2,3,3] budget:10");
+        System.out.println("1. 01033334444");
+        System.out.println("2. 027778888");
         System.out.print("테스트 케이스를 선택 : ");
         
-        int[] d = {};
-        int budget = 0;
+        String phone_number = "";
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
         try(Scanner scan = new Scanner(System.in)){
             int key = scan.nextInt();
             switch (key) {
                 case 1:
-                    d = new int[]{1,3,2,5,4};
-                    budget = 9;
+                    phone_number = "01033334444";
                     break;
                 case 2:
-                    d = new int[]{2,2,3,3};
-                    budget = 10;
+                    phone_number = "027778888";
                     break;
                 default:
                     System.out.println("존재하지 않는 테스트 케이스 선택하여 자동으로 1번으로 처리됩니다.");
-                    d = new int[]{1,3,2,5,4};
-                    budget = 9;
+                    phone_number = "01033334444";
                     break;
             }
         }
         
-        int result = solution(d,budget);
+        String result = solution(phone_number);
         System.out.println("result : " + result);
     }
 
-    public int solution(int[] d, int budget){
+    public String solution(String phone_number){
 
-        int answer = 0;
+        String answer = "";
 
-        for (int i = 0; i < d.length; i++) {
-            System.out.println(budget + " : " + d[i]);
+        int numLen = phone_number.length();
+        if(numLen >= 4 & numLen <= 20) {
 
-            if(budget - d[i] > 0){
-                budget -= d[i];
-                answer++;
-            }
+            for (int i = 0; i < numLen - 4; i++) {
+                answer += "*";
+            } 
+            answer += phone_number.substring(numLen-4, numLen);
+                
         }
+
 
         return answer;        
     }
-
 
 }
