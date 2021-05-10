@@ -64,6 +64,7 @@ public class Budget {
             // 만약 합계 금액이 예산보다 큰 경우 카운트 --
             if (sum > budget) {
                 answer--;
+                break;
             }
         }
         
