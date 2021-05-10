@@ -1,5 +1,6 @@
 package level1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Budget {
@@ -48,21 +49,24 @@ public class Budget {
         System.out.println("result : " + result);
     }
 
-    public int solution(int[] d, int budget){
-
+    public int solution(int[] d, int budget) {
         int answer = 0;
+        int sum = 0;
 
+        // 부서별 신청한 금액 오름차순 정렬
+        Arrays.sort(d);
+        // 부서 요청 금액배열의 길이만큼 도는 for문
         for (int i = 0; i < d.length; i++) {
-            System.out.println(budget + " : " + d[i]);
-
-            if(budget - d[i] > 0){
-                budget -= d[i];
-                answer++;
+            // 배열 돌때 마다 카운트 ++
+            answer++;
+            // 합계 금액 더하기
+            sum += d[i];
+            // 만약 합계 금액이 예산보다 큰 경우 카운트 --
+            if (sum > budget) {
+                answer--;
             }
         }
-
-        return answer;        
+        
+        return answer;
     }
-
-
 }
