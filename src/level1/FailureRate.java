@@ -94,12 +94,11 @@ public class FailureRate {
         // 맵에서 랭크 처리하자.
         double max = hsm.get(1);
 
-        for (int key = 1 ; key <= hsm.keySet().size() ; key++) {
-            
+        for (int key = 2 ; key <= hsm.keySet().size() ; key++) {            
             if( max < hsm.get(key)) max = hsm.get(key);
-
-            if( max == hsm.get(key)) answer[key-1] = key;
         }
+
+        System.out.println( max );
 
         return answer;        
     }
