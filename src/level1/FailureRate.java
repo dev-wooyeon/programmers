@@ -1,6 +1,8 @@
 package level1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class FailureRate {
@@ -46,42 +48,58 @@ public class FailureRate {
         
         int[] results = solution(n,stages);
         for(int result : results){
-            System.out.println("result : " + result);
+            System.out.print(result + ", ");
         }
     }
 
     public int[] solution(int n, int[] stages){
 
-        int[] answer = {};
+        int[] answer = new int[n];
         
-        int fail = 1;
+        HashMap<Integer,Double> hsm = new HashMap<Integer,Double>();
+        // 스테이지에 머물러 있는 인원 수 체크
 
-        
+        // 실패한유저 체크
 
-        for (int j = 0; j <= n; j++) {
+        // 스테이지 N개 만큼 도는 for문
+        for (int i = 1; i < n+1; i++) {
 
-            ArrayList<Integer> list = new ArrayList<Integer>();
+            int fail = 0;
+            int succ = 0;
+
             System.out.println("==================");
-            for(int i = 1 ; i <= stages.length-1 ; i ++){
+            // 스테이지에 
+            for(int j = 0 ; j < stages.length ; j ++){
                 
                 
-                stages[i] = stages[i] - j;    
-                System.out.println("["+i+"]"+"["+j+"]"+"["+stages[i]+"]");
-                if (stages[i] == 0) {
-                    fail++;
-                    
-                    list.remove(i-1);
-                } 
-                if (stages[i] >= 0 ){
-                    list.add(stages[i-1]);
+                if ( ( stages[j] - i ) > 0) {
+                    System.out.println("[SUCC] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
+                    succ++;
                 }
+
+                if ( ( stages[j] - i ) == 0) {
+                    System.out.println("[FAIL] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
+                    fail++;
+                } 
+
             }
-            
-            System.out.println("["+j+"] Stage, failure Rate : " + fail + "/"+ list.size());
-            
+
+            System.out.println("stages users cnt : " + (succ+fail) + ", fail cnt : " + fail);
+            hsm.put(i, (double)fail / (double)(succ+fail) * 100);
+
         }
 
-        
+        System.out.println(hsm.toString());
+
+        // 맵에서 랭크 처리하자.
+        double max = hsm.get(1);
+
+        for (int key = 1 ; key <= hsm.keySet().size() ; key++) {
+            
+            if( max < hsm.get(key)) max = hsm.get(key);
+
+            if( max == hsm.get(key)) answer[key-1] = key;
+        }
 
         return answer;        
     }
