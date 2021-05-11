@@ -48,14 +48,18 @@ public class MaskingNumber {
 
         String answer = "";
 
+        // 번호의 길이를 받아온다.
         int numLen = phone_number.length();
+
+        // 제한 조건
         if(numLen >= 4 & numLen <= 20) {
 
+            // 뒷자리 4자리 제외하고 * 표시를 길이에 맞게 처리하는 for
             for (int i = 0; i < numLen - 4; i++) {
                 answer += "*";
             } 
+            // 답안지에 번호 뒷 4자리를 추가 세팅한다.
             answer += phone_number.substring(numLen-4, numLen);
-                
         }
 
 
