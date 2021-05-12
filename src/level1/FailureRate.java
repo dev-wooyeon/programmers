@@ -1,6 +1,8 @@
 package level1;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -56,7 +58,7 @@ public class FailureRate {
 
         int[] answer = new int[n];
         
-        HashMap<Integer,Double> hsm = new HashMap<Integer,Double>();
+        ArrayList<Double> list = new ArrayList<Double>();
         // 스테이지에 머물러 있는 인원 수 체크
 
         // 실패한유저 체크
@@ -85,23 +87,18 @@ public class FailureRate {
             }
 
             System.out.println("stages users cnt : " + (succ+fail) + ", fail cnt : " + fail);
-            hsm.put(i, (double)fail / (double)(succ+fail) * 100);
-
+            Double failure = (double)fail / (double)(succ+fail) * 100;
+            list.add(failure);
         }
 
-        System.out.println(hsm.toString());
+        Collections.sort(list, Comparator.reverseOrder());
 
-        // 맵에서 랭크 처리하자.
-        double max = hsm.get(1);
-
-        for (int key = 2 ; key <= hsm.keySet().size() ; key++) {            
-            if( max < hsm.get(key)) max = hsm.get(key);
+        for (int i = 0; i < list.size(); i++) {
+            // answer = list.get(i);
         }
 
-        System.out.println( max );
 
         return answer;        
     }
-
 }
 
