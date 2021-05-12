@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class FailureRate {
@@ -48,7 +47,7 @@ public class FailureRate {
             }
         }
         
-        int[] results = solution(n,stages);
+        int[] results = solution2(n,stages);
         for(int result : results){
             System.out.print(result + ", ");
         }
@@ -58,45 +57,95 @@ public class FailureRate {
 
         int[] answer = new int[n];
         
+        Double[] failures = new Double[n];
+
         ArrayList<Double> list = new ArrayList<Double>();
-        // 스테이지에 머물러 있는 인원 수 체크
-
-        // 실패한유저 체크
-
         // 스테이지 N개 만큼 도는 for문
-        for (int i = 1; i < n+1; i++) {
+        for (int i = 1; i < n+1; ++i) {
 
             int fail = 0;
             int succ = 0;
 
-            System.out.println("==================");
             // 스테이지에 
-            for(int j = 0 ; j < stages.length ; j ++){
+            for(int stage : stages){
                 
-                
-                if ( ( stages[j] - i ) > 0) {
-                    System.out.println("[SUCC] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
-                    succ++;
+                if ( i <= stage) {
+                    // System.out.println("[SUCC] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
+                    succ++;    
                 }
-
-                if ( ( stages[j] - i ) == 0) {
-                    System.out.println("[FAIL] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
+                
+                if ( i == stage) {
+                    // System.out.println("[FAIL] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
                     fail++;
                 } 
 
             }
 
-            System.out.println("stages users cnt : " + (succ+fail) + ", fail cnt : " + fail);
-            Double failure = (double)fail / (double)(succ+fail) * 100;
+            // System.out.println("stages users cnt : " + succ + ", fail cnt : " + (stages.length-succ));
+            Double failure = (double)fail/(succ+fail);
+            failures[i-1] = failure;
             list.add(failure);
         }
 
         Collections.sort(list, Comparator.reverseOrder());
 
         for (int i = 0; i < list.size(); i++) {
-            // answer = list.get(i);
+            for(int j = 0 ; j < failures.length ; j++){
+                if(list.get(i) == failures[j]){
+                    answer[i] = j + 1;
+                    failures[j] = failures[j]-1;
+                }
+            }
         }
 
+
+        return answer;        
+    }
+
+    public int[] solution2(int N, int[] stages){
+
+        int[] answer = new int[N];
+        
+        HashMap<Integer,Double> map = new HashMap<Integer,Double>();
+        // N개의 스테이지 만큼 도는 for문
+        for (int i = 1; i < N+1; ++i) {
+            int fail = 0;
+            int succ = 0;
+            // 도전중인 유저수의 스테이지 만큼 도는 for문
+            for(int stage : stages){
+                // 유저의 스테이지가 i의 스테이지보다 작거나 같다면 성공카운트++
+                if ( i <= stage) succ++;
+                // 유저의 스테이지가 i의 스테이지와 같다면 실패 카운트++
+                if ( i == stage) fail++;
+            }
+
+            double failure = 0.0;
+            // 0으로 나누어 지는 경우가 없게 하기 위해 유효성 검사를 하고, 실패율을 계산한다.
+            if(succ!=0 && fail!=0) {
+                failure = (double)fail/(double)succ;
+            }
+            // 스테이지 i 번과, 실패율을 map에 담는다.
+            map.put(i, failure);
+        }
+
+        // 정렬하기 위해 스테이지 N개 만큼 도는 outer i for
+        for (int i = 0; i < N; i++) {
+            // max값 처리를 위해 i루프 돌때마다 max:-1, idx=0 초기화
+            double max = -1;
+            int idx = 0;
+            // map의 keySet메소드를 호출하여 존재하는 mapKey만큼 도는 inner for
+            for(Integer mapKey : map.keySet()){
+                // max값과 value값을 비교후 값 세팅
+                if(max < map.get(mapKey)){
+                    max = map.get(mapKey);
+                    idx = mapKey;
+                }
+            }
+            // 답안지세팅.
+            answer[i] = idx;
+            // 세팅한 idx제거한다.
+            map.remove(idx);
+        }
 
         return answer;        
     }
