@@ -2,6 +2,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -17,7 +18,7 @@ public class App {
     public static void classLoader() throws Exception {
 
         // 처리할 데이터 객체 선언
-        Map<Integer, Class<?>> classMap = new HashMap<Integer, Class<?>>();
+        Map<Integer, Class<?>> classMap = new HashMap<>();
 
         // 패키지 주소 설정
         String packageName = "level1";
@@ -25,7 +26,7 @@ public class App {
         URL packageDirURL = Thread.currentThread().getContextClassLoader().getResource(packageNameSlashed);
 
         // 주소 설정한 경로에서 파일 얻어오기 위한 경로 세팅
-        String directoryString = packageDirURL.getFile();
+        String directoryString = Objects.requireNonNull(packageDirURL).getFile();
 
         // 경로에서 읽어 파일로 처리
         File directory = new File(directoryString);
@@ -36,7 +37,7 @@ public class App {
             // 디렉토리의 파일 리스트를 String[]로 받는다
             String[] files = directory.list();
             // 파일 수 만큼 처리한다.
-            for (String fileName : files) {
+            for (String fileName : Objects.requireNonNull(files)) {
                 // 확장자 삭제
                 fileName = fileName.substring(0, fileName.length() - 6);
                 // 클래스 로딩
@@ -57,8 +58,7 @@ public class App {
         // classMap.get(scan.nextInt()).getDeclaredConstructor().newInstance();
         classMap.get(scan.nextInt()).newInstance();
         // 스캐너가 사용되었으면 닫는다.
-        if (scan != null)
-            scan.close();
+        scan.close();
 
     }
 
