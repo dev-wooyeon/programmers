@@ -90,7 +90,7 @@ public class PracticeTest {
         // if( max < jumsu[0]) max = jumsu[0]; // 0으로 초기화 되어 생성되기 때문에 MAX값에 0번값으로 초기 세팅으로 변경
         if( max < jumsu[1]) max = jumsu[1];
         if( max < jumsu[2]) max = jumsu[2];
-
+        
         // 점수 배열만큼 도는 for
         for(int i=0; i < jumsu.length ; i++) {
             // 점수배열에서 얻은 값이 가장 높은 점수인경우
