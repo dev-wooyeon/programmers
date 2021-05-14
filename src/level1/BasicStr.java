@@ -15,7 +15,7 @@ public class BasicStr {
 
     /// Method
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         new BasicStr();
     }
 
