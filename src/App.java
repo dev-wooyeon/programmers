@@ -3,8 +3,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class App {
+public class App implements KeyListener {
 
     /// Fields
 
@@ -15,7 +17,7 @@ public class App {
      * 앱 실행시 최초 호출하는 클래스 로더 메소드
      * 사용자에게 입력 받은 클래스의 생성을 담당한다.
      */
-    public static void classLoader() throws Exception {
+    public static void classLoader() throws Exception{
 
         // 처리할 데이터 객체 선언
         Map<Integer,Class<?>> classMap = new HashMap<Integer,Class<?>>();
@@ -65,4 +67,16 @@ public class App {
         
         classLoader();
     }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("press event : " + e);
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
 }
