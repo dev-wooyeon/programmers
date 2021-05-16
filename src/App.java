@@ -42,7 +42,13 @@ public class App {
                 // 클래스 로딩
                 Class<?> clas = Class.forName(packageName + "." + fileName);
                 // 실행할 파일을 보여주기 위한 클래스 번호와 파일이름
-                System.out.println(classNo + ". " + fileName);
+                int count = 0;
+                while (count <= 3) {
+                    System.out.print(classNo + ". " + fileName);
+                    if (count == 3)
+                        System.out.println();
+                    count++;
+                }
                 // 매핑 처리할 데이터맵에 데이터 넣기
                 classMap.put(classNo, clas);
                 classNo++;
