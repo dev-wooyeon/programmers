@@ -1,7 +1,5 @@
 package level1;
 
-import java.util.Arrays;
-
 public class DESC_Integer {
     
     /// Fields
