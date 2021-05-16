@@ -2,6 +2,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -17,7 +18,7 @@ public class App {
     public static void classLoader() throws Exception {
 
         // 처리할 데이터 객체 선언
-        Map<Integer, Class<?>> classMap = new HashMap<Integer, Class<?>>();
+        Map<Integer, Class<?>> classMap = new HashMap<>();
 
         // 패키지 주소 설정
         String packageName = "level1";
@@ -25,7 +26,7 @@ public class App {
         URL packageDirURL = Thread.currentThread().getContextClassLoader().getResource(packageNameSlashed);
 
         // 주소 설정한 경로에서 파일 얻어오기 위한 경로 세팅
-        String directoryString = packageDirURL.getFile();
+        String directoryString = Objects.requireNonNull(packageDirURL).getFile();
 
         // 경로에서 읽어 파일로 처리
         File directory = new File(directoryString);
@@ -36,19 +37,17 @@ public class App {
             // 디렉토리의 파일 리스트를 String[]로 받는다
             String[] files = directory.list();
             // 파일 수 만큼 처리한다.
-            for (String fileName : files) {
+            for (int i = 0; i < files.length; i++) {
+                String fileName = files[i];
+                // for (String fileName : Objects.requireNonNull(files)) {
                 // 확장자 삭제
                 fileName = fileName.substring(0, fileName.length() - 6);
                 // 클래스 로딩
                 Class<?> clas = Class.forName(packageName + "." + fileName);
                 // 실행할 파일을 보여주기 위한 클래스 번호와 파일이름
-                int count = 0;
-                while (count <= 3) {
-                    System.out.print(classNo + ". " + fileName);
-                    if (count == 3)
-                        System.out.println();
-                    count++;
-                }
+                System.out.print(numberFormat(classNo) + " : " + fileNameFormat(fileName));
+                if (classNo % 5 == 0)
+                    System.out.println("");
                 // 매핑 처리할 데이터맵에 데이터 넣기
                 classMap.put(classNo, clas);
                 classNo++;
@@ -56,20 +55,54 @@ public class App {
         }
 
         // 실행 할 파일을 입력 받는다
-        System.out.print("실행 할 파일을 선택 하세요 : ");
+        System.out.print("\r\n실행 할 파일의 번호를 입력 하세요 : ");
         Scanner scan = new Scanner(System.in);
 
         // 입력 받은 클래스의 Default Constructor를 생성한다.
         // classMap.get(scan.nextInt()).getDeclaredConstructor().newInstance();
         classMap.get(scan.nextInt()).newInstance();
         // 스캐너가 사용되었으면 닫는다.
-        if (scan != null)
-            scan.close();
+        scan.close();
 
     }
 
-    public static void main(String[] args) throws Exception {
-
+    public static void main(String args[]) throws Exception {
         classLoader();
     }
+
+    public static String fileNameFormat(String fileName) {
+        String returnStr = "";
+
+        int fixed_length = 15;
+        if (fileName.length() > fixed_length) {
+            returnStr = fileName.substring(0, fixed_length);
+            returnStr += " | ";
+        } else {
+            int needEmptyLen = fixed_length - fileName.length();
+            returnStr += fileName;
+
+            for (int i = 0; i < fixed_length; i++) {
+                if (i < needEmptyLen)
+                    returnStr += " ";
+            }
+            returnStr += " | ";
+
+        }
+
+        return returnStr;
+    }
+
+    public static String numberFormat(int classNo) {
+        StringBuffer value = new StringBuffer();
+
+        if (classNo < 10) {
+            value.append("0");
+            value.append(classNo);
+        } else {
+            value.append(classNo);
+        }
+
+        return value.toString();
+    }
+
 }
