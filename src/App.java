@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Scanner;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class App implements KeyListener {
+public class App {
 
     /// Fields
 
@@ -39,13 +37,17 @@ public class App implements KeyListener {
             // 디렉토리의 파일 리스트를 String[]로 받는다
             String[] files = directory.list();
             // 파일 수 만큼 처리한다.
-            for (String fileName : Objects.requireNonNull(files)) {
+            for (int i = 0 ; i < files.length ; i++ ) {
+                String fileName = files[i];
+            // for (String fileName : Objects.requireNonNull(files)) {
                 // 확장자 삭제
                 fileName = fileName.substring(0, fileName.length() - 6);
                 // 클래스 로딩
                 Class<?> clas = Class.forName(packageName + "." + fileName);
                 // 실행할 파일을 보여주기 위한 클래스 번호와 파일이름
-                System.out.println(classNo + ". " + fileName);
+                System.out.print(numberFormat(classNo) + " : " + fileNameFormat(fileName));
+                if(classNo % 5 == 0 ) System.out.println("");
+                
                 // 매핑 처리할 데이터맵에 데이터 넣기
                 classMap.put(classNo, clas);
                 classNo++;
@@ -53,7 +55,7 @@ public class App implements KeyListener {
         }
 
         // 실행 할 파일을 입력 받는다
-        System.out.print("실행 할 파일을 선택 하세요 : ");
+        System.out.print("\r\n실행 할 파일의 번호를 입력 하세요 : ");
         Scanner scan = new Scanner(System.in);
 
         // 입력 받은 클래스의 Default Constructor를 생성한다.
@@ -64,20 +66,42 @@ public class App implements KeyListener {
 
     }
 
-    public static void main(String[] args) throws Exception {
-
+    public static void main(String args[]) throws Exception{
         classLoader();
     }
-    @Override
-    public void keyTyped(KeyEvent e) {
+
+    public static String fileNameFormat(String fileName){
+        String returnStr = "";
+
+        int fixed_length = 15;
+        if(fileName.length() > fixed_length) {
+            returnStr = fileName.substring(0, fixed_length);
+            returnStr += " | ";
+        } else {
+            int needEmptyLen = fixed_length - fileName.length();
+            returnStr += fileName;
+
+            for (int i = 0; i < fixed_length; i++) {
+                if(i < needEmptyLen) returnStr += " ";
+            }
+            returnStr += " | ";
+
+        }
+
         
+        return returnStr;
     }
-    @Override
-    public void keyPressed(KeyEvent e) {
-        System.out.println("press event : " + e);
+
+    public static String numberFormat(int classNo){
+        StringBuffer value = new StringBuffer();
+
+        if(classNo < 10){
+            value.append("0");
+            value.append(classNo);
+        } else { value.append(classNo); }
+
+        return value.toString();
     }
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
+
 
 }
