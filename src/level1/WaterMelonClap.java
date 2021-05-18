@@ -3,8 +3,8 @@ package level1;
 import java.util.Scanner;
 
 public class WaterMelonClap {
-    
-     /// Fields
+
+    /// Fields
 
     /// Contructor
     public WaterMelonClap() {
@@ -14,17 +14,17 @@ public class WaterMelonClap {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         System.out.println("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
         System.out.println("1. n:3");
         System.out.println("2. n:4");
         System.out.print("테스트 케이스를 선택 : ");
-        
+
         int n;
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
-        try(Scanner scan = new Scanner(System.in)){
+        try (Scanner scan = new Scanner(System.in)) {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
@@ -39,25 +39,25 @@ public class WaterMelonClap {
                     break;
             }
         }
-        
+
         String result = solution(n);
         System.out.println("result : " + result);
     }
 
-    public String solution(int n){
+    public String solution(int n) {
 
         String answer = "";
 
 
-
         for (int i = 0; i < n; i++) {
 
-            if(i % 2 == 0) answer += "수"; else answer += "박";
-            
+            if (i % 2 == 0) answer += "수";
+            else answer += "박";
+
         }
 
 
-        return answer;        
+        return answer;
     }
 
 }

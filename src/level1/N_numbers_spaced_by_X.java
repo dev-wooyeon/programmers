@@ -3,7 +3,7 @@ package level1;
 import java.util.Scanner;
 
 public class N_numbers_spaced_by_X {
-    
+
     /// Fields
 
     /// Contructor
@@ -14,7 +14,7 @@ public class N_numbers_spaced_by_X {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         System.out.println("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
         System.out.println("1. x:2 n:5");
@@ -26,7 +26,7 @@ public class N_numbers_spaced_by_X {
         int n = 0;
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
-        try(Scanner scan = new Scanner(System.in)){
+        try (Scanner scan = new Scanner(System.in)) {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
@@ -48,11 +48,11 @@ public class N_numbers_spaced_by_X {
                     break;
             }
         }
-        
+
         long[] results = solution(x, n);
         System.out.print("result :");
         for (long result : results) {
-            System.out.print(result);    
+            System.out.print(result);
         }
 
     }
@@ -62,7 +62,7 @@ public class N_numbers_spaced_by_X {
         long[] answer = new long[n];
 
         for (int i = 0; i < n; ++i) {
-            answer[i] = (long) x * (i+1);
+            answer[i] = (long) x * (i + 1);
         }
         return answer;
     }

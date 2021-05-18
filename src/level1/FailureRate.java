@@ -17,18 +17,18 @@ public class FailureRate {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         System.out.println("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
         System.out.println("1. N:5 stages[2, 1, 2, 6, 2, 4, 3, 3]");
         System.out.println("2. N:4 stages[4, 4, 4, 4, 4]");
         System.out.print("테스트 케이스를 선택 : ");
-        
+
         int n = 0;
         int[] stages = {};
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
-        try(Scanner scan = new Scanner(System.in)){
+        try (Scanner scan = new Scanner(System.in)) {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
@@ -46,83 +46,83 @@ public class FailureRate {
                     break;
             }
         }
-        
-        int[] results = solution2(n,stages);
-        for(int result : results){
+
+        int[] results = solution2(n, stages);
+        for (int result : results) {
             System.out.print(result + ", ");
         }
     }
 
-    public int[] solution(int n, int[] stages){
+    public int[] solution(int n, int[] stages) {
 
         int[] answer = new int[n];
-        
+
         Double[] failures = new Double[n];
 
         ArrayList<Double> list = new ArrayList<Double>();
         // 스테이지 N개 만큼 도는 for문
-        for (int i = 1; i < n+1; ++i) {
+        for (int i = 1; i < n + 1; ++i) {
 
             int fail = 0;
             int succ = 0;
 
             // 스테이지에 
-            for(int stage : stages){
-                
-                if ( i <= stage) {
+            for (int stage : stages) {
+
+                if (i <= stage) {
                     // System.out.println("[SUCC] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
-                    succ++;    
+                    succ++;
                 }
-                
-                if ( i == stage) {
+
+                if (i == stage) {
                     // System.out.println("[FAIL] ["+j+"]"+"["+i+"]"+"["+stages[j]+"]");
                     fail++;
-                } 
+                }
 
             }
 
             // System.out.println("stages users cnt : " + succ + ", fail cnt : " + (stages.length-succ));
-            Double failure = (double)fail/(succ+fail);
-            failures[i-1] = failure;
+            Double failure = (double) fail / (succ + fail);
+            failures[i - 1] = failure;
             list.add(failure);
         }
 
         Collections.sort(list, Comparator.reverseOrder());
 
         for (int i = 0; i < list.size(); i++) {
-            for(int j = 0 ; j < failures.length ; j++){
-                if(list.get(i) == failures[j]){
+            for (int j = 0; j < failures.length; j++) {
+                if (list.get(i) == failures[j]) {
                     answer[i] = j + 1;
-                    failures[j] = failures[j]-1;
+                    failures[j] = failures[j] - 1;
                 }
             }
         }
 
 
-        return answer;        
+        return answer;
     }
 
-    public int[] solution2(int N, int[] stages){
+    public int[] solution2(int N, int[] stages) {
 
         int[] answer = new int[N];
-        
-        HashMap<Integer,Double> map = new HashMap<Integer,Double>();
+
+        HashMap<Integer, Double> map = new HashMap<Integer, Double>();
         // N개의 스테이지 만큼 도는 for문
-        for (int i = 1; i < N+1; ++i) {
+        for (int i = 1; i < N + 1; ++i) {
             int fail = 0;
             int succ = 0;
             // 도전중인 유저수의 스테이지 만큼 도는 for문
-            for(int stage : stages){
+            for (int stage : stages) {
                 // 유저의 스테이지가 i의 스테이지보다 작거나 같다면 성공카운트++
-                if ( i <= stage) succ++;
+                if (i <= stage) succ++;
                 // 유저의 스테이지가 i의 스테이지와 같다면 실패 카운트++
-                if ( i == stage) fail++;
+                if (i == stage) fail++;
             }
 
             double failure = 0.0;
             // 0으로 나누어 지는 경우가 없게 하기 위해 유효성 검사를 하고, 실패율을 계산한다.
-            if(succ!=0 && fail!=0) {
-                failure = (double)fail/(double)succ;
+            if (succ != 0 && fail != 0) {
+                failure = (double) fail / (double) succ;
             }
             // 스테이지 i 번과, 실패율을 map에 담는다.
             map.put(i, failure);
@@ -134,9 +134,9 @@ public class FailureRate {
             double max = -1;
             int idx = 0;
             // map의 keySet메소드를 호출하여 존재하는 mapKey만큼 도는 inner for
-            for(Integer mapKey : map.keySet()){
+            for (Integer mapKey : map.keySet()) {
                 // max값과 value값을 비교후 값 세팅
-                if(max < map.get(mapKey)){
+                if (max < map.get(mapKey)) {
                     max = map.get(mapKey);
                     idx = mapKey;
                 }
@@ -147,7 +147,7 @@ public class FailureRate {
             map.remove(idx);
         }
 
-        return answer;        
+        return answer;
     }
 }
 

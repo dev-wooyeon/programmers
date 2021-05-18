@@ -34,16 +34,16 @@ public class Budget {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
-                    d = new int[] { 1, 3, 2, 5, 4 };
+                    d = new int[]{1, 3, 2, 5, 4};
                     budget = 9;
                     break;
                 case 2:
-                    d = new int[] { 2, 2, 3, 3 };
+                    d = new int[]{2, 2, 3, 3};
                     budget = 10;
                     break;
                 default:
                     System.out.println("존재하지 않는 테스트 케이스 선택하여 자동으로 1번으로 처리됩니다.");
-                    d = new int[] { 1, 3, 2, 5, 4 };
+                    d = new int[]{1, 3, 2, 5, 4};
                     budget = 9;
                     break;
             }

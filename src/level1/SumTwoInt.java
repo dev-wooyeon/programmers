@@ -24,10 +24,10 @@ public class SumTwoInt {
         int[] numbers = {};
         switch (key) {
             case 1:
-                numbers = new int[] { 2, 1, 3, 4, 1 };
+                numbers = new int[]{2, 1, 3, 4, 1};
                 break;
             case 2:
-                numbers = new int[] { 2, 1, 3, 4, 1 };
+                numbers = new int[]{2, 1, 3, 4, 1};
                 break;
             default:
                 break;

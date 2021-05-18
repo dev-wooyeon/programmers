@@ -9,22 +9,22 @@ public class HateSameNum {
 
     /// Constructor
     public HateSameNum() {
-         System.out.println( getClass().getName() + " Create Default Constuctor ");
+        System.out.println(getClass().getName() + " Create Default Constuctor ");
 
-         problem();
+        problem();
     }
 
     /// Method
     public void problem() {
-        
+
         int key = 1;
         int[] arr = {};
         switch (key) {
             case 1:
-                arr = new int[]{1,1,3,3,0,1,1};
+                arr = new int[]{1, 1, 3, 3, 0, 1, 1};
                 break;
             case 2:
-                arr = new int[]{4,4,4,3,3};
+                arr = new int[]{4, 4, 4, 3, 3};
                 break;
             default:
                 break;
@@ -68,28 +68,28 @@ public class HateSameNum {
     //     for(int an : answer){
     //         System.out.print(an + ", ");    
     //     }
-        
+
     // }   
 
-    public void solution(int[] arr){
+    public void solution(int[] arr) {
 
         List<Integer> list = new ArrayList<Integer>();
         list.add(arr[0]);
 
-        for(int i = 1 ; i < arr.length ; i++){
-            if(arr[i] != arr[i-1]){
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != arr[i - 1]) {
                 list.add(arr[i]);
             }
         }
 
         int[] answer = new int[list.size()];
 
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             answer[i] = list.get(i);
             System.out.println(answer[i]);
         }
 
-        
-    }   
+
+    }
 
 }

@@ -34,15 +34,15 @@ public class StringASC {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
-                    s = new String[] { "sun", "bed", "car" };
+                    s = new String[]{"sun", "bed", "car"};
                     n = 1;
                     break;
                 case 2:
-                    s = new String[] { "abce", "abcd", "cdx" };
+                    s = new String[]{"abce", "abcd", "cdx"};
                     n = 2;
                     break;
                 default:
-                    s = new String[] { "sun", "bed", "car" };
+                    s = new String[]{"sun", "bed", "car"};
                     n = 1;
                     break;
             }

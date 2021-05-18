@@ -1,7 +1,7 @@
 package level1;
 
 public class DESC_Integer {
-    
+
     /// Fields
 
     /// Contructor
@@ -12,10 +12,10 @@ public class DESC_Integer {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         long n = 118372;
-        
+
         long result = solution(n);
         System.out.print("result : " + result);
 
@@ -24,17 +24,17 @@ public class DESC_Integer {
     private long solution(long n) {
 
         long answer = 0;
-        
+
         String newStr = String.valueOf(n);
         long max = 0;
         for (int i = 0; i < newStr.length(); i++) {
 
-            System.out.println(" max : " + max + " char : " + newStr.charAt(i) );
-            if(max < newStr.charAt(i))
+            System.out.println(" max : " + max + " char : " + newStr.charAt(i));
+            if (max < newStr.charAt(i))
                 max = newStr.charAt(i);
 
         }
-        
+
         return answer;
     }
 }

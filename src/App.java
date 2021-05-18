@@ -12,6 +12,7 @@ public class App {
     /// Constructor
 
     /// Method
+
     /**
      * 앱 실행시 최초 호출하는 클래스 로더 메소드 사용자에게 입력 받은 클래스의 생성을 담당한다.
      */

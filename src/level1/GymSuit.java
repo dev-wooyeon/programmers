@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GymSuit {
-    
+
     /// Fields
 
     /// Contructor
@@ -13,7 +13,7 @@ public class GymSuit {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         System.out.println("=============================================================================== ");
         System.out.println("문제 설명");
@@ -51,17 +51,17 @@ public class GymSuit {
             int key = scan.nextInt();
 
             switch (key) {
-                case 1  :
+                case 1:
                     n = 5;
                     lost = new int[]{2, 4};
                     reserve = new int[]{1, 3, 5};
                     break;
-                case 2  :
+                case 2:
                     n = 5;
                     lost = new int[]{2, 4};
                     reserve = new int[]{3};
                     break;
-                case 3  :
+                case 3:
                     n = 3;
                     lost = new int[]{3};
                     reserve = new int[]{1};
@@ -86,7 +86,7 @@ public class GymSuit {
         int answer = n;
 
         // 배열의 n번째와 학생의 번호n을 매치되도록 생성하기 위해 n+1 사이즈로 생성
-        int[] students = new int[n+1];
+        int[] students = new int[n + 1];
 
         for (int i = 1; i < students.length; ++i) {
             students[i] = i;
@@ -94,18 +94,17 @@ public class GymSuit {
 
         for (int i = 0; i < lost.length; i++) {
             System.out.println(" students[lost[i]] : " + students[lost[i]] + ", lost[i] : " + lost[i]);
-            if( students[lost[i]] == lost[i] ) n --;
+            if (students[lost[i]] == lost[i]) n--;
         }
 
         for (int i = 0; i < reserve.length; i++) {
-            
+
         }
         System.out.println(" 잃어버린 학생을 제외한 학생 수 : " + n);
 
- 
 
         // 잃어버린 학생들 만큼 빼기
-        answer -= lost.length ;
+        answer -= lost.length;
 
         // 체육복 빌려줌 처리
         answer += reserve.length;

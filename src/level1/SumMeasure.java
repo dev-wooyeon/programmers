@@ -3,7 +3,7 @@ package level1;
 import java.util.Scanner;
 
 public class SumMeasure {
-    
+
     /// Fields
 
     /// Contructor
@@ -14,10 +14,10 @@ public class SumMeasure {
     }
 
     /// Method
-    public void problem(){
+    public void problem() {
 
         System.out.println("====================================");
-        
+
         System.out.println("문제설명");
         System.out.println("  정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.");
         System.out.println("제한 사항");
@@ -29,7 +29,7 @@ public class SumMeasure {
         int n = 0;
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
-        try(Scanner scan = new Scanner(System.in)){
+        try (Scanner scan = new Scanner(System.in)) {
             int key = scan.nextInt();
             switch (key) {
                 case 1:
@@ -57,13 +57,13 @@ public class SumMeasure {
 
         int answer = 0;
 
-        if(n == 0) return 0;
-        if(n > 1) {
+        if (n == 0) return 0;
+        if (n > 1) {
             answer++;
-            for(int i = 2; i <= n/2 ; ++i) if(n % i == 0) answer += i;
+            for (int i = 2; i <= n / 2; ++i) if (n % i == 0) answer += i;
         }
-    
+
         return answer + n;
     }
-    
+
 }
