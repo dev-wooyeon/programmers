@@ -1,5 +1,6 @@
 package level1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GymSuit {
@@ -76,13 +77,32 @@ public class GymSuit {
 
 
         int result = solution(n, lost, reserve);
-        System.out.println(result);
+        // System.out.println(result);
 
     }
 
     private int solution(int n, int[] lost, int[] reserve) {
 
         int answer = n;
+
+        // 배열의 n번째와 학생의 번호n을 매치되도록 생성하기 위해 n+1 사이즈로 생성
+        int[] students = new int[n+1];
+
+        for (int i = 1; i < students.length; ++i) {
+            students[i] = i;
+        }
+
+        for (int i = 0; i < lost.length; i++) {
+            System.out.println(" students[lost[i]] : " + students[lost[i]] + ", lost[i] : " + lost[i]);
+            if( students[lost[i]] == lost[i] ) n --;
+        }
+
+        for (int i = 0; i < reserve.length; i++) {
+            
+        }
+        System.out.println(" 잃어버린 학생을 제외한 학생 수 : " + n);
+
+ 
 
         // 잃어버린 학생들 만큼 빼기
         answer -= lost.length ;
