@@ -66,11 +66,19 @@ public class Triad_Flip {
 
         }
 
-        System.out.println("stack.size() = " + stack.size());
+        System.out.println("stack = " + stack);
 
-        for (int i = 0; i < stack.size(); i++) {
+        for (int i = 0 ; i < stack.size() ; i++) {
 
-            System.out.println("stack.pop() = " + stack.pop());
+            while(!stack.empty()){
+
+                if(stack.pop() > 0) {
+
+                    System.out.println("i = " + i);
+                    System.out.println(" stack.pop() " + stack.pop() + ", stack.pop() = " + Math.pow(3, stack.pop() * i ));
+                    answer += Math.pow(stack.pop() * 3, i);
+                }
+            }
 
         }
 
