@@ -58,29 +58,28 @@ public class Triad_Flip {
         int answer = 0;
 
         Stack<Integer> stack = new Stack<>();
-        int temp = n;
-        while(temp > 0){
-
-            stack.push(temp % 3);
-            temp = temp / 3;
-
+        while(n > 0){
+            stack.push(n % 3);
+            n = n / 3;
         }
 
         System.out.println("stack = " + stack);
 
-        for (int i = 0 ; i < stack.size() ; i++) {
-
+            int jegob = 0;
+            int tempCal = 0;
             while(!stack.empty()){
 
-                if(stack.pop() > 0) {
+                int temp2 = stack.pop();
 
-                    System.out.println("i = " + i);
-                    System.out.println(" stack.pop() " + stack.pop() + ", stack.pop() = " + Math.pow(3, stack.pop() * i ));
-                    answer += Math.pow(stack.pop() * 3, i);
+                if(temp2 > 0 ){
+//                    System.out.println("temp2 = " + temp2 + ", 3 * jegob : " + 3 * jegob);
+//
+//                    System.out.println(" Math.pow(temp2, 3 * jegob ) = " + Math.pow(3, temp2 * jegob ));
+                    answer += temp2 * Math.pow(3, jegob );
+                    jegob ++;
                 }
             }
 
-        }
 
         return answer;
     }
