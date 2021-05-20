@@ -19,25 +19,17 @@ public class WhereK {
     public void problem() {
 
         System.out.println("￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
-        System.out.println("1. array[1,5,2,6,3,7,4] commands[[2,5,3], [4,4,1], [1,7,3]]");
-        System.out.print("테스트 케이스를 선택 : ");
+        System.out.println("테스트 케이스\n1. array[1,5,2,6,3,7,4] commands[[2,5,3], [4,4,1], [1,7,3]]");
 
-        int[] array = {};
-        int[][] commands = {};
+        int[] array = new int[]{};
+        int[][] commands = new int[][]{};
         // 스캐너 사용 후 자동으로 자원 반납을 위한
         // Try-with-resources
         try (Scanner scan = new Scanner(System.in)) {
             int key = scan.nextInt();
-            switch (key) {
-                case 1:
-                    array = new int[]{1, 5, 2, 6, 3, 7, 4};
-                    commands = new int[][]{{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
-                    break;
-                default:
-                    System.out.println("존재하지 않는 테스트 케이스 선택하여 자동으로 1번으로 처리됩니다.");
-                    array = new int[]{1, 5, 2, 6, 3, 7, 4};
-                    commands = new int[][]{{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
-                    break;
+            if (1 == key) {
+                array = new int[]{1, 5, 2, 6, 3, 7, 4};
+                commands = new int[][]{{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
             }
         }
 
@@ -46,6 +38,7 @@ public class WhereK {
             System.out.println("result : " + result);
         }
     }
+
 
     public int[] solution(int[] array, int[][] commands) {
 
@@ -60,9 +53,11 @@ public class WhereK {
             int end = commands[i][1];
             int k = commands[i][2];
 
+
             // ArrayList 생성
-            ArrayList<Integer> list = new ArrayList<Integer>();
+            ArrayList<Integer> list = new ArrayList<>();
             // start와 end를 비교하는 while 조건절
+
             while (start <= end) {
 
                 // 리스트에 start-1번째 인덱스를 얻어 추가한다.
@@ -85,5 +80,4 @@ public class WhereK {
 
         return answer;
     }
-
 }
