@@ -1,6 +1,7 @@
 package level1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GymSuit {
@@ -43,9 +44,9 @@ public class GymSuit {
         System.out.println("  3. n : 3, lost[3], reserve[1]");
         System.out.print("테스트 케이스를 선택 : ");
 
-        int n = 0;
-        int[] lost = {};
-        int[] reserve = {};
+        int n;
+        int[] lost;
+        int[] reserve;
         try (Scanner scan = new Scanner(System.in)) {
 
             int key = scan.nextInt();
@@ -76,40 +77,102 @@ public class GymSuit {
         }
 
 
-        int result = solution(n, lost, reserve);
-        // System.out.println(result);
+        int result = solution2(n, lost, reserve);
+        System.out.println(result);
 
+    }
+
+    private int solution2(int n, int[] lost, int[] reserve) {
+
+        // 전체 학생 수 - 도난당한 학생 수 = 초기 answer
+        // 5 - 2 = 3;
+        int answer = n - lost.length;
+
+        // 도난 당한 학생수 만큼 도는 outer for
+        for (int i = 0; i < lost.length; i++) {
+            // 빌려 줄 수 있는 학생 수 만큼 도는 inner for
+            for (int j = 0; j < reserve.length; j++) {
+                // 잃어버린 학생의 번호와 빌려 줄 수 있는 학생의 번호가 같다면
+                if (lost[i] == reserve[j]) {
+                    // 답안지 건수 +1
+                    answer++;
+                    // 빌려줄수 있는 학생의 번호에 -1 대입
+                    reserve[j] = 0;
+                    // 도난당한 학생의 번호를 -1 대입
+                    lost[i] = 0;
+                    // inner for break 후 outer for 진행 한다.
+                    break;
+                } // end of if
+            } // end of inner for
+        } // end of outer for
+
+        // 도난당한 학생수 만큼 도는 outer for
+        for (int i = 0; i < lost.length; i++) {
+            // 잃어버린 학생의 번호와 빌려 줄 수 있는 학생의 번호가 같은 경우 처리 하지 않도록 -1값에 대하여 continue 처리
+            if (lost[i] == 0) continue;
+            // 빌려 줄 수 있는 학생 수만큼 도는 inner for
+            for (int j = 0; j < reserve.length; j++) {
+                // 잃어버린 학생의 번호와 빌려 줄 수 있는 학생의 번호가 같은 경우 처리 하지 않도록 -1값에 대하여 continue 처리
+                if (reserve[j] == 0) continue;
+
+                // 만약, 잃어버린 학생의 번호와 빌려줄수 있는 학생의 번호가 앞뒤 +-1 이면
+                if (lost[i] == reserve[j] + 1 || lost[i] == reserve[j] - 1) {
+                    // 답안지 건수 +1
+                    answer++;
+                    // 빌려줄 수 있는 학생의 번호에 -1 대입
+                    reserve[j] = 0;
+                    // inner for break 후 outer for 진행 한다.
+                    break;
+                } // end of if
+            } // end of inner for
+        } // end of outer for
+
+        return answer;
     }
 
     private int solution(int n, int[] lost, int[] reserve) {
 
-        int answer = n;
+        int answer = 0;
 
-        // 배열의 n번째와 학생의 번호n을 매치되도록 생성하기 위해 n+1 사이즈로 생성
+        // 전체 학생의 수만큼 학생 배열 생성
         int[] students = new int[n + 1];
 
-        for (int i = 1; i < students.length; ++i) {
-            students[i] = i;
+        // 모든 학생들이 체육복 1개를 가지고 왔다고 가정하여 개수 세팅
+        for (int i = 0; i < n; ++i) {
+            students[i] = 1;
         }
+        // 체육복 초기세팅
+        System.out.println("init suit cnt = " + Arrays.toString(students));
 
-        for (int i = 0; i < lost.length; i++) {
-            System.out.println(" students[lost[i]] : " + students[lost[i]] + ", lost[i] : " + lost[i]);
-            if (students[lost[i]] == lost[i]) n--;
-        }
+        // 도난 당한 학생의 체육복 개수 -1
+        for (int i = 0; i < lost.length; ++i) students[lost[i] - 1]--;
+        // 체육복 도난 처리
+        System.out.println("lost suit cnt = " + Arrays.toString(students));
 
-        for (int i = 0; i < reserve.length; i++) {
+        // 여분이 있는 학생의 체육복 개수 +1
+        for (int i = 0; i < reserve.length; ++i) students[reserve[i] - 1]++;
+        // 여분 처리
+        System.out.println("reserve suit cnt = " + Arrays.toString(students));
 
-        }
-        System.out.println(" 잃어버린 학생을 제외한 학생 수 : " + n);
+        // 학생수 만큼 도는 for
+        for (int i = 0; i < n; ++i) {
 
+            // i보다 앞번호 처리( 0번보다 앞은 없기때문에 예외 처리 )
+            if (students[i] == 2 && i > 0 && students[i - 1] == 0) {
+                students[i]--; // 여분 체육복 빌려줌 처리
+                students[i - 1]++;  // 체육복 받음 처리
+            }
 
-        // 잃어버린 학생들 만큼 빼기
-        answer -= lost.length;
+            // i보다 뒷번호 처리( n번보다 앞은 없기때문에 예외 처리 )
+            if (students[i] == 2 && students[i + 1] == 0) {
+                students[i]--; // 여분 체육복 빌려줌 처리
+                students[i + 1]++;  // 체육복 받음 처리
+            }
+        } // end of outer for
+        System.out.println("after suit cnt = " + Arrays.toString(students));
 
-        // 체육복 빌려줌 처리
-        answer += reserve.length;
+        for (int i = 0; i < n; ++i) if (students[i] > 0) answer++;
 
-        "".repeat(2);
 
         return answer;
     }
