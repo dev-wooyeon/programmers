@@ -57,29 +57,26 @@ public class Triad_Flip {
 
         int answer = 0;
 
+        // LIFO 구조체 선언
         Stack<Integer> stack = new Stack<>();
+
+        // 입력받은 10진수 n이 0보다 크다면 반복한다.
         while(n > 0){
+            // 10진수 45 -> 3진수 1200 -> 뒤집으면 0021
             stack.push(n % 3);
+            // n을 나눈 몫을 저장하여 while문을 제어한다.
             n = n / 3;
         }
 
-        System.out.println("stack = " + stack);
-
-            int jegob = 0;
-            int tempCal = 0;
-            while(!stack.empty()){
-
-                int temp2 = stack.pop();
-
-                if(temp2 > 0 ){
-//                    System.out.println("temp2 = " + temp2 + ", 3 * jegob : " + 3 * jegob);
-//
-//                    System.out.println(" Math.pow(temp2, 3 * jegob ) = " + Math.pow(3, temp2 * jegob ));
-                    answer += temp2 * Math.pow(3, jegob );
-                    jegob ++;
-                }
-            }
-
+        // 제곱승 변수
+        int squared = 0;
+        // 스택이 비어있지 않으면
+        while (!stack.empty()) {
+            // 답안지세팅 (
+            // ( stack.pop() = 1 ) * ( Math.pow(3, squared++) = 3^0 = 1 ) = 1
+            // ( stack.pop() = 2 ) * ( Math.pow(3, squared++) = 3^1 = 3 ) = 6
+            answer += stack.pop() * Math.pow(3, squared++);
+        }
 
         return answer;
     }

@@ -1,5 +1,6 @@
 package level1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -58,20 +59,31 @@ public class Find_Decimal {
 
     private int solution(int n) {
 
+        // n <= 1 일 때 종료
+        if(n <= 1) return 0;
         int answer = 0;
 
-        for(int i = 2 ; i <= n ; ++i){
+        Boolean[] primeAry = new Boolean[n+1];
+        // 0번째와 1번째를 소수 아님으로 처리
+        primeAry[0] = false;
+        primeAry[1] = false;
+        // 2~ n 까지 소수로 설정
+        for(int i=2; i<=n; i++ ) primeAry[i] = true;
+        // System.out.println(" step 001. primeAry = " + Arrays.asList(primeAry));
 
-            for(int j = 2; j*j <= i ; ++j) {
-                if(i % j == 0) {
+        // 2 부터  ~ i*i <= n
+        // 각각의 배수들을 지워간다.
 
-                } else {
-                    System.out.println("i = " + i + ", j = " + j);
-                    answer ++;
-                }
+        for(int i=2; i<=Math.sqrt(n); i++){
+            if(primeAry[i]){
+                for(int j = i; i*j<=n; j++) primeAry[i*j] = false;
+                //i*i 미만은 이미 처리되었으므로 j의 시작값은 i*i로 최적화할 수 있다.
             }
         }
 
+        // System.out.println(" step 002. primeAry = " + Arrays.asList(primeAry));
+
+        for (boolean flag : primeAry) if(flag) answer++;
 
         return answer;
     }
