@@ -102,7 +102,7 @@ public class Marathon {
         Iterator<String> keySet = hsm.keySet().iterator();
         // 가지고 있는 key 개수 만큼 동작하는 반복문
         while (keySet.hasNext()) {
-            // getKey
+            // getokeney
             String key = keySet.next();
             // 완주한 사람은 0이므로 완주하지 못한 사람을 얻을 수 있음.
             if (hsm.get(key) != 0) answer = key;

@@ -90,6 +90,4 @@ public class Sum_Cnt_Of_Measure {
 
         return answer;
     }
-
 }
-
