@@ -35,19 +35,19 @@ public class MinMax {
             int key = scan.nextInt();
 
             switch (key) {
-                case 1 -> {
+                case 1 :
                     n = 3;
                     m = 12;
-                }
-                case 2 -> {
+                    break;
+                case 2 :
                     n = 2;
                     m = 5;
-                }
-                default -> {
+                    break;
+                default :
                     System.out.println("입력하신 테스트 케이스가 존재 하지 않아 [1번] 으로 처리됩니다.");
                     n = 3;
                     m = 12;
-                }
+                    break;
             }
         }
 
