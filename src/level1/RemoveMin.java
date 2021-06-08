@@ -64,16 +64,32 @@ public class RemoveMin {
 
     public int[] solution(int[] arr){
 
-        int len = arr.length;
-        if(len > 1 ) len -= 1;
-        int[] answer = new int[len];
+        int[] answer = {};
 
-        Arrays.sort(arr);
+        // 배열의 길이가 1인 경우 -1 리턴
+        if (arr.length == 1) return new int[]{-1};
 
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i+1; j < arr.length ; j++) {
+        // 배열의 처음 데이터를 숫자형 변수 min 에 대입
+        int min = arr[0];
+        // 배열의 길아 2번째 부터 길이만큼 도는 for
+        for (int i = 1; i < arr.length; i++) {
+            // System.out.println("[DEBUG] min = " + min + " arr["+i+"] = " + arr[i]);
+            // min값과, 배열의 값중 작은 수를 리턴
+            min = (min <= arr[i]) ? min : arr[i];
+        }
+        // System.out.println("[DEBUG] 가장 작은 수 : " + min);
+        // 배열 -1 길이만큼 답안지 길이 초기화
+        answer = new int[arr.length-1];
 
-            }
+        // 제일 작은 수를 빼고 담기 때문에 index 가 어디에서 차이날지 모름.
+        // 하여 답안지의 배열 처리할 idx 변수 선언
+        int idx = 0;
+        // 배열의 길이만큼 도는 for
+        for (int i=0; i < arr.length ; i++) {
+            // 제일 작은수와 배열의 값이 같으면 답안지에 세팅되지 않도록 continue 처리
+            if(arr[i] == min) continue;
+            // 답안지 세팅
+            answer[idx++] = arr[i];
         }
 
 
