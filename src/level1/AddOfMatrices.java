@@ -40,7 +40,7 @@ public class AddOfMatrices {
                     break;
                 case 2 :
                     arr1 = new int[][]{{1},{2}};
-                    arr2 = new int[][]{{3},{5}};
+                    arr2 = new int[][]{{3},{4}};
                     break;
                 default :
                     System.out.println("입력하신 테스트 케이스가 존재 하지 않아 [1번] 으로 처리됩니다.");
@@ -70,12 +70,16 @@ public class AddOfMatrices {
 
     private int[][] solution(int[][] arr1, int[][] arr2) {
 
-        int[][] answer = new int[arr1.length][arr2.length];
+        int[][] answer = new int[arr1.length][arr1[0].length];
 
         System.out.println(" arr1.length : " + arr1[0].length);
         System.out.println(" arr2.length : " + arr2[0].length);
-        for (int i = 0; i < arr1[i].length; i++) {
-            for (int j = 0; j < arr2[j].length; j++) {
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr1[i].length; j++) {
+                System.out.println(" ================================== ");
+                System.out.println(" arr1["+i+"]["+j+"] = " + arr1[i][j] );
+                System.out.println(" arr2["+i+"]["+j+"] = " + arr2[i][j] );
+                System.out.println(" ================================== ");
                 answer[i][j] = arr1[i][j] + arr2[i][j];
             }
         }
