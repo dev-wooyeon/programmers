@@ -54,45 +54,46 @@ public class Week2 {
         StringBuilder answer = new StringBuilder();
 
         // 유일한 최고점, 최저점, 평균 구할 갯수 조회
-        int max = -1;
-        int min = 101;
-        int max_cnt = 1;
-        int min_cnt = 1;
+        int max = -1; // 0<= score
+        int min = 101; // score <= 100
         int sum = 0;
         double cal_avg = 0.0;
-        double[] avg_list = new double[scores.length];
+        int slen = scores.length;
+        double[] avg_list = new double[slen];
 
-        for(int i = 0 ; i < scores.length; i++){
-            for(int j = 0 ; j < scores.length; j++){
-                if(max < scores[j][i]) max = scores[j][i];
-                if(min > scores[j][i]) min = scores[j][i];
-                if(max == scores[j][i]) max_cnt += 1;
-                if(min == scores[j][i]) min_cnt += 1;
-            }
-        }
+        for(int i = 0 ; i < slen; i++){
+            for(int j = 0 ; j < slen; j++) {
 
-        // 평균 구하기
-        for(int i = 0 ; i < scores.length ; ++i) {
-            for (int j = 0; j < scores.length; ++j) {
+                if (i == j) continue;
+                max = Math.max(max, scores[j][i]);
+                min = Math.min(min, scores[j][i]);
                 sum += scores[j][i];
             }
-            System.out.println("["+i+"] max_cnt : " + max_cnt + ", min_cnt = " + min_cnt );
-            if(   (max_cnt / 2 < 1 || min_cnt / 2 < 1)) cal_avg = sum / scores.length - 1;
-            if( ! (max_cnt / 2 < 1 || min_cnt / 2 < 1)) cal_avg = sum / scores.length;
+
+            // 평균 구하기
+            if (scores[i][i] > max || scores[i][i] < min) {
+                cal_avg = sum / slen - 1;
+            } else {
+                sum+= scores[i][i];
+                cal_avg = sum / slen;
+            }
             avg_list[i] = cal_avg;
+
             cal_avg = 0.0;
             sum = 0;
+            max = -1;
+            min = 101;
         }
 
         // 학점 정하기
         for(double avg : avg_list){
             System.out.println(" avg = " + avg);
             switch ((int) avg / 10){
-                case 10 : answer.append("A"); break;
+                case 10 :
                 case 9 : answer.append("A"); break;
                 case 8 : answer.append("B"); break;
                 case 7 : answer.append("C"); break;
-                case 6 : answer.append("D"); break;
+                case 6 :
                 case 5 : answer.append("D"); break;
                 default: answer.append("F");
             }
