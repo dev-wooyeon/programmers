@@ -70,20 +70,18 @@ public class AddOfMatrices {
 
     private int[][] solution(int[][] arr1, int[][] arr2) {
 
-        int[][] answer = new int[arr1.length][arr1[0].length];
+        int[][] answer = new int[arr1.length][arr2[0].length];
 
-        System.out.println(" arr1.length : " + arr1[0].length);
-        System.out.println(" arr2.length : " + arr2[0].length);
         for (int i = 0; i < arr1.length; i++) {
-            for (int j = 0; j < arr1[i].length; j++) {
-                System.out.println(" ================================== ");
-                System.out.println(" arr1["+i+"]["+j+"] = " + arr1[i][j] );
-                System.out.println(" arr2["+i+"]["+j+"] = " + arr2[i][j] );
-                System.out.println(" ================================== ");
+            for (int j = 0; j < arr2[i].length; j++) {
+                // System.out.println(" ================================== ");
+                // System.out.println(" arr1["+i+"]["+j+"] = " + arr1[i][j] );
+                // System.out.println(" arr2["+i+"]["+j+"] = " + arr2[i][j] );
+                // System.out.println(" ================================== ");
                 answer[i][j] = arr1[i][j] + arr2[i][j];
             }
         }
 
-        return  answer;
+        return answer;
     }
 }
