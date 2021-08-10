@@ -54,49 +54,51 @@ public class Week2 {
 
         StringBuilder answer = new StringBuilder();
 
-        // 유일한 최고점, 최저점, 평균 구할 갯수 조회
-        int max = -1; // 0<= score
-        int min = 101; // score <= 100
-        int sum = 0;
-        double cal_avg = 0.0;
-        int slen = scores.length;
+        // 변수 서언 최고, 최저, 합계, 길이
+        int max, min, sum, slen = scores.length;
+        // 계산하여 담을 평균 값
+        double cal_avg;
+        // 계산 완료한 데이터 담을 평균 점수 리스트
         double[] avg_list = new double[slen];
 
+        // 행 처리할 for
         for(int i = 0 ; i < slen; i++){
+
+            // 0<= scores <= 100 이므로 max = -1, min = 101로 선언
+            sum = 0;
+            max = -1;
+            min = 101;
+
+            // 열 처리할 for
             for(int j = 0 ; j < slen; j++) {
 
-                if (i == j) continue; // 0,0 1,1 2,2 3,3 4,4 인 경우 다음 루프 처리를 위해 사용한다.
+                // 0,0 1,1 2,2 3,3 4,4 ( 자기 자신을 평가한 점수 제외 )
+                if (i == j) continue;
+                // 최고 점수 조회
                 max = Math.max(max, scores[j][i]);
+                // 최저 점수 조회
                 min = Math.min(min, scores[j][i]);
+                // 자기 자신을 평가한 점수를 제외하고 계산
                 sum += scores[j][i];
 
             }
 
-//            System.out.println(" [" +i+"]"+"==============");
-//            System.out.println(" min : " + min);
-//            System.out.println(" max : " + max);
-//            System.out.println(" sum : " + sum);
-
             // 평균 구하기
+            // 유일한 점수인지 체크히여 유일한 점수인 경우 -1처리
             if (scores[i][i] > max || scores[i][i] < min) {
                 cal_avg = sum / (slen - 1);
-                // System.out.println(" [" +i+"]"+ " if in avg = " + cal_avg);
             } else {
+                // 자기 자신을 평가한 점수가 유일한 값이 아닐 경우 합산하여 평균 계산
                 sum += scores[i][i];
                 cal_avg = sum / slen;
-                // System.out.println(" [" +i+"]"+ " if else avg = " + cal_avg);
             }
-            avg_list[i] = cal_avg;
 
-            cal_avg = 0.0;
-            sum = 0;
-            max = -1;
-            min = 101;
+            // 계산한 평균값 리스트에 담는다.
+            avg_list[i] = cal_avg;
         }
 
-        // 학점 정하기
+        // 학점 구하기
         for(double avg : avg_list){
-            // System.out.println(" avg = " + avg);
             switch ((int) avg / 10){
                 case 10 :
                 case 9 : answer.append("A"); break;
