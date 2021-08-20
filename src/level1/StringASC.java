@@ -50,7 +50,6 @@ public class StringASC {
 
         String[] result = solution(s, n);
         for (String str : result) {
-            System.out.println("str : " + str);
         }
 
     }

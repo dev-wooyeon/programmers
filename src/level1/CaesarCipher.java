@@ -64,39 +64,32 @@ public class CaesarCipher {
 
         String result = solution(s, n);
 
-        System.out.print("result = " + result);
+        System.out.print("\n result = " + result);
         StringBuilder answer = new StringBuilder();
     }
 
     private String solution(String s, int n) {
 
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
-        int A = 'A';
-        int a = 'a';
-        int z = 'z';
-        int Z = 'Z';
-
-        System.out.println("A = " + A); System.out.println("a = " + a);
-        System.out.println("z = " + z); System.out.println("Z = " + Z);
-
-        // 대소문자 구분
-        // a - z
-        // A - Z
-
-        // z=122; a=65
-        //
+        // 대소문자 구분을 위한 start 선언 (A or a)
         char start;
+        // 문자열의 길이만큼 도는 for
         for (int i = 0; i < s.length(); i++) {
+            // 문자열의 한글자 씩 읽는다.
             char org = s.charAt(i);
-            if ( 32 == org ) { answer += " "; continue; }
+            // 만약 공백일 경우 답안지에 공백 세팅 후 다음 처리 진행
+            if ( 32 == org ) { answer.append(" "); continue; }
+            // 대소문자 구분하여 start에 세팅
             start = Character.isUpperCase(org)?'A':'a';
+            // ORG = z(122), n = 4, start = a(97), (122+4-97)%26 = 3 + 07 = d(100)
             org = (char) ( start + ( org + n - start ) % 26 );
-            answer += org;
+            // 답안지 세팅
+            answer.append(org);
         }
 
 
-        return answer;
+        return answer.toString();
     }
 }
 

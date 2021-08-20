@@ -22,7 +22,8 @@ public class App {
         Map<Integer, Class<?>> classMap = new HashMap<>();
 
         // 패키지 주소 설정
-        String packageName = "level1";
+        // String packageName = "level1";
+        String packageName = "weeklyChallange";
         String packageNameSlashed = "./" + packageName.replace(".", "/");
         URL packageDirURL = Thread.currentThread().getContextClassLoader().getResource(packageNameSlashed);
 

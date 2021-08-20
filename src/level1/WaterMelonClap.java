@@ -7,7 +7,8 @@ public class WaterMelonClap {
     /// Fields
 
     /// Contructor
-    public WaterMelonClap() {
+    public
+    WaterMelonClap() {
         super();
 
         problem();
