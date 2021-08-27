@@ -52,6 +52,8 @@ public class Week4 {
     }
 
     private String solution(String[] table, String[] language, int[] preference) {
+
+        System.out.println(" TEST ");
         return "";
     }
 }
