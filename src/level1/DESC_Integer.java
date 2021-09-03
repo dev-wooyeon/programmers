@@ -26,15 +26,16 @@ public class DESC_Integer {
         long answer = 0;
 
         String newStr = String.valueOf(n);
-        long max = 0;
-        for (int i = 0; i < newStr.length(); i++) {
-
-            System.out.println(" max : " + max + " char : " + newStr.charAt(i));
-            if (max < newStr.charAt(i))
-                max = newStr.charAt(i);
-
+        StringBuilder temp = new StringBuilder();
+        for (int i = 0; i < newStr.length()-1; i++) {
+            for (int j = i+1 ;j < newStr.length(); j++) {
+                if (newStr.charAt(i) > newStr.charAt(j)) {
+                    temp.append(newStr.charAt(i));
+                    break;
+                }
+            }
         }
-
+        answer = Long.parseLong(temp.toString());
         return answer;
     }
 }
