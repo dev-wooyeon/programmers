@@ -23,7 +23,7 @@ public class App {
 
         // 패키지 주소 설정
         // String packageName = "level1";
-        String packageName = "weeklyChallange";
+        String packageName = "level2";
         String packageNameSlashed = "./" + packageName.replace(".", "/");
         URL packageDirURL = Thread.currentThread().getContextClassLoader().getResource(packageNameSlashed);
 
