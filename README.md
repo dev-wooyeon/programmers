@@ -4,13 +4,13 @@
 ## Level 1
 |문제|문제 링크|소스링크|
 |----|--------|-------|
-|행렬의 덧셈||
-|x만큼 간격이 있는 n개의 숫자||[source_level_1_N numbers spaced by x]|
+|행렬의 덧셈||[source level 1 addOfMatrices]
+|x만큼 간격이 있는 n개의 숫자||[source_level_1_N numbers spaced by x]
 |직사각형 별찍기||
-|나누어 떨어지는 숫자 배열|[programmers_link]|[source_level_1_Return_Divisor]|
+|나누어 떨어지는 숫자 배열|[programmers_link]|[source_level_1_Return_Divisor]
 |두 정수 사이의 합||
 |문자열 내 p와 y의 개수||
-|문자열 다루기 기본||
+|문자열 다루기 기본||[source level 1 basicStr]
 |서울에서 김서방 찾기||
 |수박수박수박수박수박수?||[source level 1 watermelonclap]
 |문자열을 정수로 바꾸기||
@@ -36,13 +36,14 @@
 |실패율||
 |약수의 개수와 덧셈||
 |3진법 뒤집기||[source level 1 Triad_Flip]|
-|예산||
+|예산||[source level 1 budget]
 |부족한 금액 계산하기||
 |비밀지도||[source_level_1_SecretMap]|
 |가운데 글자 가져오기||
 |다트 게임||
 |같은 숫자는 싫어||
 |윤년||[source_level_1_Year 2016]|
+|내 마음대로 정렬하기||[source level 1 alignMyMind]|
 
 ## Level 2
 |문제|문제 링크|소스링크|
@@ -62,3 +63,7 @@ md 파일 리스트 작성중 . . .
 [source level 1 watermelonclap]:https://github.com/ieunune/programmers/blob/master/src/level1/WaterMelonClap.java
 [source level 1 Triad_Flip]:https://github.com/ieunune/programmers/blob/master/src/level1/Triad_Flip.java
 [source level 1 Sum Cnt Of Measure]:https://github.com/ieunune/programmers/blob/master/src/level1/Sum_Cnt_Of_Measure.java
+[source level 1 addOfMatrices]:https://github.com/ieunune/programmers/blob/master/src/level1/AddOfMatrices.java
+[source level 1 alignMyMind]:https://github.com/ieunune/programmers/blob/master/src/level1/AlignMyMind.java
+[source level 1 basicStr]:https://github.com/ieunune/programmers/blob/master/src/level1/BasicStr.java
+[source level 1 budget]:https://github.com/ieunune/programmers/blob/master/src/level1/Budget.java
