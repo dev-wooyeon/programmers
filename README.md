@@ -6,15 +6,15 @@
 |----|--------|-------|
 |행렬의 덧셈||[source_level_1_addOfMatrices]
 |x만큼 간격이 있는 n개의 숫자||[source_level_1_N numbers spaced by x]
-|직사각형 별찍기||
+|직사각형 별찍기||[source_level_1_SquareStar]
 |나누어 떨어지는 숫자 배열|[programmers_link]|[source_level_1_Return_Divisor]
-|두 정수 사이의 합||
+|두 정수 사이의 합||[source_level_1_SumTwoInt]
 |문자열 내 p와 y의 개수||
 |문자열 다루기 기본||[source_level_1_basicStr]
 |서울에서 김서방 찾기||
 |수박수박수박수박수박수?||[source_level_1_watermelonclap]
-|문자열을 정수로 바꾸기||
-|시저 암호||
+|문자열을 정수로 바꾸기||[source_level_1_StringToInt]
+|시저 암호||[source_level_1_CaesarCipher]
 |약수의 합||[source_level_1_Sum Cnt Of Measure]|
 |이상한 문자 만들기||
 |자릿수 더하기||
@@ -68,3 +68,6 @@ md 파일 리스트 작성중 . . .
 [source_level_1_basicStr]:https://github.com/ieunune/programmers/blob/master/src/level1/BasicStr.java
 [source_level_1_budget]:https://github.com/ieunune/programmers/blob/master/src/level1/Budget.java
 [source_level_1_SquareStar]:https://github.com/ieunune/programmers/blob/master/src/level1/SquareStar.java
+[source_level_1_SumTwoInt]:https://github.com/ieunune/programmers/blob/master/src/level1/SumTwoInt.java
+[source_level_1_StringToInt]:https://github.com/ieunune/programmers/blob/master/src/level1/StringToInt.java
+[source_level_1_CaesarCipher]:https://github.com/ieunune/programmers/blob/master/src/level1/CaesarCipher.java
