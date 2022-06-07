@@ -60,10 +60,11 @@ md 파일 리스트 작성중 . . .
 [source_level_1_SecretMap]:https://github.com/ieunune/programmers/blob/master/src/level1/SecretMap.java
 [source_level_1_Year 2016]:https://github.com/ieunune/programmers/blob/master/src/level1/Year2016.java
 [source_level_1_WhereK]:https://github.com/ieunune/programmers/blob/master/src/level1/WhereK.java
-[source level 1 watermelonclap]:https://github.com/ieunune/programmers/blob/master/src/level1/WaterMelonClap.java
-[source level 1 Triad_Flip]:https://github.com/ieunune/programmers/blob/master/src/level1/Triad_Flip.java
-[source level 1 Sum Cnt Of Measure]:https://github.com/ieunune/programmers/blob/master/src/level1/Sum_Cnt_Of_Measure.java
-[source level 1 addOfMatrices]:https://github.com/ieunune/programmers/blob/master/src/level1/AddOfMatrices.java
-[source level 1 alignMyMind]:https://github.com/ieunune/programmers/blob/master/src/level1/AlignMyMind.java
-[source level 1 basicStr]:https://github.com/ieunune/programmers/blob/master/src/level1/BasicStr.java
-[source level 1 budget]:https://github.com/ieunune/programmers/blob/master/src/level1/Budget.java
+[source_level_1_watermelonclap]:https://github.com/ieunune/programmers/blob/master/src/level1/WaterMelonClap.java
+[source_level_1_Triad_Flip]:https://github.com/ieunune/programmers/blob/master/src/level1/Triad_Flip.java
+[source_level_1_Sum Cnt Of Measure]:https://github.com/ieunune/programmers/blob/master/src/level1/Sum_Cnt_Of_Measure.java
+[source_level_1_addOfMatrices]:https://github.com/ieunune/programmers/blob/master/src/level1/AddOfMatrices.java
+[source_level_1_alignMyMind]:https://github.com/ieunune/programmers/blob/master/src/level1/AlignMyMind.java
+[source_level_1_basicStr]:https://github.com/ieunune/programmers/blob/master/src/level1/BasicStr.java
+[source_level_1_budget]:https://github.com/ieunune/programmers/blob/master/src/level1/Budget.java
+[source_level_1_SquareStar]:https://github.com/ieunune/programmers/blob/master/src/level1/SquareStar.java
