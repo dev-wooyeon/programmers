@@ -1,3 +1,5 @@
+![thumbnail](https://user-images.githubusercontent.com/50124623/183564295-73746e08-cd8d-411f-8256-ef578d0e7fe6.png)
+
 ## Programmers 
 💻알고리즘 문제 해석 능력을 기르기 위해 만들어진 리포지터리입니다.
 
