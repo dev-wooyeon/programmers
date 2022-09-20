@@ -1,5 +1,7 @@
 package level1;
 
+import java.util.Arrays;
+
 public class DESC_Integer {
 
     /// Fields
@@ -25,17 +27,16 @@ public class DESC_Integer {
 
         long answer = 0;
 
-        String newStr = String.valueOf(n);
+        String[] n_List = String.valueOf(n).split("");
+        Arrays.sort(n_List);
+
         StringBuilder temp = new StringBuilder();
-        for (int i = 0; i < newStr.length()-1; i++) {
-            for (int j = i+1 ;j < newStr.length(); j++) {
-                if (newStr.charAt(i) > newStr.charAt(j)) {
-                    temp.append(newStr.charAt(i));
-                    break;
-                }
-            }
+        for (String index: n_List) {
+            temp.append(index);
         }
-        answer = Long.parseLong(temp.toString());
+
+        answer = Long.parseLong(temp.reverse().toString());
+
         return answer;
     }
 }
