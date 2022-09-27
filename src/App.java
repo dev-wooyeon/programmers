@@ -22,8 +22,6 @@ public class App {
         Map<Integer, Class<?>> classMap = new HashMap<>();
 
         // 패키지 주소 설정
-
-
         System.out.println("\r\n실행 할 패키지 레벨 번호를 선택하세요.");
         System.out.println("1. level1 ");
         System.out.println("2. level2 ");
