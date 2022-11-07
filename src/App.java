@@ -23,11 +23,11 @@ public class App {
 
         // 패키지 주소 설정
         System.out.println("\r\n실행 할 패키지 레벨 번호를 선택하세요.");
-        System.out.println("1. level1 ");
-        System.out.println("2. level2 ");
+        System.out.println("1. java.level1 ");
+        System.out.println("2. java.level2 ");
         System.out.print("입력 : ");
         Scanner scan_package_level = new Scanner(System.in);
-        String packageName = "level" + scan_package_level.next();
+        String packageName = "java.level" + scan_package_level.next();
 
         String packageNameSlashed = "./" + packageName.replace(".", "/");
         URL packageDirURL = Thread.currentThread().getContextClassLoader().getResource(packageNameSlashed);
