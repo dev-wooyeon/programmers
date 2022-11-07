@@ -6,7 +6,7 @@
 <details>
 <summary>Java</summary>
 <div markdown="1">
-
+  
 ## Level 1
 |문제|문제 링크|소스링크|
 |----|--------|-------|
@@ -69,8 +69,6 @@
 
 </div>
 </details>
-
-md 파일 리스트 작성중 . . .
 
 [programmers_link]:https://programmers.co.kr/learn/courses/30/lessons/12910?language=java
 
