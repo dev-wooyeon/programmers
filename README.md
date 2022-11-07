@@ -3,6 +3,10 @@
 ## Programmers 
 💻알고리즘 문제 해석 능력을 기르기 위해 만들어진 리포지터리입니다.
 
+<details>
+<summary>Java</summary>
+<div markdown="1">
+
 ## Level 1
 |문제|문제 링크|소스링크|
 |----|--------|-------|
@@ -51,12 +55,25 @@
 |문제|문제 링크|소스링크|
 |----|--------|-------|
 |오픈채팅방|||
+</div>
+</details>
 
+<details>
+<summary>python</summary>
+<div markdown="1">
 
+## Level 1
+|문제|문제 링크|소스링크|
+|----|--------|-------|
+|푸드파이터 대회|[푸드_파이트_대회_문제]|[푸드_파이트_대회_풀이]
+
+</div>
+</details>
 
 md 파일 리스트 작성중 . . .
 
 [programmers_link]:https://programmers.co.kr/learn/courses/30/lessons/12910?language=java
+
 [source_level_1_Return_Divisor]:https://github.com/ieunune/programmers/blob/master/src/level1/Return_Divisor.java
 [source_level_1_N numbers spaced by x]:https://github.com/ieunune/programmers/blob/master/src/level1/N_numbers_spaced_by_X.java
 [source_level_1_SecretMap]:https://github.com/ieunune/programmers/blob/master/src/level1/SecretMap.java
@@ -73,3 +90,6 @@ md 파일 리스트 작성중 . . .
 [source_level_1_SumTwoInt]:https://github.com/ieunune/programmers/blob/master/src/level1/SumTwoInt.java
 [source_level_1_StringToInt]:https://github.com/ieunune/programmers/blob/master/src/level1/StringToInt.java
 [source_level_1_CaesarCipher]:https://github.com/ieunune/programmers/blob/master/src/level1/CaesarCipher.java
+
+[푸드_파이트_대회_문제]:https://school.programmers.co.kr/learn/courses/30/lessons/134240
+[푸드_파이트_대회_풀이]:https://github.com/ieunune/programmers/blob/master/src/python/level1/%ED%91%B8%EB%93%9C_%ED%8C%8C%EC%9D%B4%ED%84%B0_%EB%8C%80%ED%9A%8C.py
