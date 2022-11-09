@@ -1,13 +1,14 @@
 def solution(food):
     answer = ''
 
-    home_fighter = ''
-    away_fighter = ''
+    # stack = []
+    # return ''.join(map(str, chain(stack, [0], stack[::-1])))
+    # ''.join(str(chain(stack, [0], stack[::-1]))))
+
     for idx, val in enumerate(food[1:]):
-        for i in range(val // 2):
-            home_fighter += str(idx + 1)
+        for _ in range(val // 2):
+            answer += str(idx + 1)
 
-    away_fighter = (home_fighter[::-1])
-    answer = home_fighter + '0' + away_fighter
-
+    answer = answer + '0' + answer[::-1]
+    print(answer)
     return answer
